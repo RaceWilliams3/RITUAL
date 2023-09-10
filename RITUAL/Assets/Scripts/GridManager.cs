@@ -12,7 +12,7 @@ public class GridManager : MonoBehaviour
 
     void Start()
     {
-        cells = gridBuilder.buildGrid(3, 1f);
+        cells = gridBuilder.buildGrid(5, 1f);
         spawnGrid();
     }
 
@@ -20,7 +20,7 @@ public class GridManager : MonoBehaviour
     {
         for (int i = 0; i < cells.Count; i++)
         {
-            Instantiate(ball, cells[i].getPos(), Quaternion.identity);
+            Instantiate(ball, cells[i].getPos(),  Quaternion.identity);
         }
     }
 

@@ -21,7 +21,11 @@ public class HexGrid
             {
                 for (k = -radius; k < radius; k++)
                 {
-                    grid.Add(new HexCell(new Vector3(i, j, k)));
+                    if (i + j + k == 0)
+                    {
+                        grid.Add(new HexCell(new Vector3(i, j, k)));
+                    }
+                    
                 }
             }
         }
