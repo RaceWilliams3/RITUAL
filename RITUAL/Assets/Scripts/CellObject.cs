@@ -25,14 +25,9 @@ public class CellObject : MonoBehaviour
 
     public bool empty;
 
-    public void Update()
+    public void Start()
     {
-        for (int i = 0; i < 6; i++)
-        {
-            Debug.DrawRay(transform.position, cellDirections[i], Color.green);
-        }
-        //Debug.DrawRay(transform.position, cellDirections[0], Color.green);
-
+        checkForNeighbors();
     }
 
     public void checkForNeighbors()
@@ -40,9 +35,15 @@ public class CellObject : MonoBehaviour
         RaycastHit hit;
         for (int i = 0; i < 6; i++)
         {
-            if (Physics.Raycast(transform.position, cellDirections[i], out hit, 2))
+            if (Physics.Raycast(transform.position + new Vector3(0,-0.2f,0), cellDirections[i], out hit, 2))
             {
+                Debug.DrawRay(transform.position + new Vector3(0, -0.2f, 0), cellDirections[i], Color.green);
                 neighbors[i] = hit.transform.gameObject;
+                //Debug.Log("Neighbor ray hit");
+            } 
+            else
+            {
+                Debug.DrawRay(transform.position + new Vector3(0, -0.2f, 0), cellDirections[i], Color.red);
             }
         }
     }
@@ -57,7 +58,29 @@ public class CellObject : MonoBehaviour
             GetComponent<MeshRenderer>().material = emptyMat;
         }
         empty = !empty;
+        updateNeighbors();
         
+    }
+
+    public void updateNeighbors()
+    {
+        foreach (GameObject x in neighbors)
+        {
+            if (x != null)
+            {
+                if (x.GetComponent<CellObject>().empty)
+                {
+                    x.GetComponent<MeshRenderer>().material = filledMat;
+                }
+                else
+                {
+                    x.GetComponent<MeshRenderer>().material = emptyMat;
+                }
+                x.GetComponent<CellObject>().empty = !x.GetComponent<CellObject>().empty;
+            }
+            
+        }
+
     }
 
     public CellObject()
