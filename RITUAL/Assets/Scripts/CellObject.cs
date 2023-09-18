@@ -13,6 +13,9 @@ public class CellObject : MonoBehaviour
 
     public GameObject[] neighbors = new GameObject[6];
 
+    public Material emptyMat;
+    public Material filledMat;
+
     private Vector3[] cellDirections = {new Vector3(0f,0.2f,1f),
                                         new Vector3(1f,0.2f,0.5f),
                                         new Vector3(1f,0.2f,-0.5f),
@@ -42,6 +45,19 @@ public class CellObject : MonoBehaviour
                 neighbors[i] = hit.transform.gameObject;
             }
         }
+    }
+
+    void OnMouseDown()
+    {
+        if (empty)
+        {
+            GetComponent<MeshRenderer>().material = filledMat;
+        } else
+        {
+            GetComponent<MeshRenderer>().material = emptyMat;
+        }
+        empty = !empty;
+        
     }
 
     public CellObject()
