@@ -12,9 +12,13 @@ public class CellObject : MonoBehaviour
      *                */
 
     public GameObject[] neighbors = new GameObject[6];
+    public Connector[] connectors;
 
     public Material emptyMat;
     public Material filledMat;
+
+
+    
 
     private Vector3[] cellDirections = {new Vector3(0f,0.2f,1f),
                                         new Vector3(1f,0.2f,0.5f),
@@ -27,8 +31,72 @@ public class CellObject : MonoBehaviour
 
     public void Start()
     {
+        connectors = gameObject.GetComponentsInChildren<Connector>();
         checkForNeighbors();
+
+        foreach (Connector x in connectors)
+        {
+            x.gameObject.SetActive(false);
+        }
+
     }
+
+    void OnMouseDown()
+    {
+        empty = false;
+        GetComponent<MeshRenderer>().material = filledMat;
+        updateNeighbors();
+        createConnectors(TileManager.instance.currentTile);
+
+        TileManager.instance.createNewTile();
+
+    }
+
+    void OnMouseEnter()
+    {
+        if (empty)
+        {
+            createConnectors(TileManager.instance.currentTile);
+        }
+    }
+
+    void OnMouseExit()
+    {
+        if (empty)
+        {
+            for (int i = 0; i < 6; i++)
+            {
+                connectors[i].gameObject.SetActive(false);
+            }
+        }
+        
+    }
+
+
+    private void createConnectors(bool[] connectionMap)
+    {
+        for(int i = 0; i < 6; i++)
+        {
+            if (connectionMap[i] == true)
+            {
+                connectors[i].gameObject.SetActive(true);
+            }
+        }
+    }
+
+
+
+    public void checkForConnections()
+    {
+        if (empty)
+        {
+            return;
+        }
+        for (int i = 0; i < 6; i++)
+        {
+        }
+    }
+
 
     public void checkForNeighbors()
     {
@@ -48,19 +116,7 @@ public class CellObject : MonoBehaviour
         }
     }
 
-    void OnMouseDown()
-    {
-        if (empty)
-        {
-            GetComponent<MeshRenderer>().material = filledMat;
-        } else
-        {
-            GetComponent<MeshRenderer>().material = emptyMat;
-        }
-        empty = !empty;
-        updateNeighbors();
-        
-    }
+
 
     public void updateNeighbors()
     {
@@ -68,15 +124,7 @@ public class CellObject : MonoBehaviour
         {
             if (x != null)
             {
-                if (x.GetComponent<CellObject>().empty)
-                {
-                    x.GetComponent<MeshRenderer>().material = filledMat;
-                }
-                else
-                {
-                    x.GetComponent<MeshRenderer>().material = emptyMat;
-                }
-                x.GetComponent<CellObject>().empty = !x.GetComponent<CellObject>().empty;
+                
             }
             
         }
