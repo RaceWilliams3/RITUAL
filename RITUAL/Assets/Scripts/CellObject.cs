@@ -27,7 +27,7 @@ public class CellObject : MonoBehaviour
                                         new Vector3(-1f,0.2f,-0.5f),
                                         new Vector3(-1f,0.2f,0.5f)};
 
-    public bool empty;
+    public bool empty = true;
 
     public void Start()
     {
@@ -39,6 +39,15 @@ public class CellObject : MonoBehaviour
             x.gameObject.SetActive(false);
         }
 
+    }
+
+    public void connectorCollided(Connector connector)
+    {
+        Debug.Log("empty stats: " + empty);
+        if (connector != null && empty == false)
+        {
+            Debug.Log("Point");
+        }
     }
 
     void OnMouseDown()
@@ -84,20 +93,6 @@ public class CellObject : MonoBehaviour
         }
     }
 
-
-
-    public void checkForConnections()
-    {
-        if (empty)
-        {
-            return;
-        }
-        for (int i = 0; i < 6; i++)
-        {
-        }
-    }
-
-
     public void checkForNeighbors()
     {
         RaycastHit hit;
@@ -129,14 +124,6 @@ public class CellObject : MonoBehaviour
             
         }
 
-    }
-
-    public CellObject()
-    {
-        empty = true;
-        //start with all empty cells as neighbors
-
-        
     }
 }
 

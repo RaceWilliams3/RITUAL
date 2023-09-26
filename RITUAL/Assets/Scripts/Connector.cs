@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class Connector : MonoBehaviour
 {
-    void OnEnable()
-    {
+    public bool connected = false;
 
+    void OnTriggerEnter()
+    {
+        if (connected == false)
+        {
+            this.transform.parent.GetComponent<CellObject>().connectorCollided(this);
+            connected = true;
+        }
     }
 }
