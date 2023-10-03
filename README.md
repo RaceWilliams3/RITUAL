@@ -15,3 +15,10 @@ Also put in basic mouse interaction and a simple test for cells notifying neigbo
 Reworked how tiles are tracked internally 
 Added a manager to generate a new random tile to place 
 Attempted to add scoring but things are broken 
+
+
+9/27/23 - 10/3/23 Changes:
+
+Added basic main menu
+Added basic game loop with scoring 
+Reworked some lights and materials for more atmosphere 
