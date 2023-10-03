@@ -2,18 +2,59 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    public TMP_Text scoreText;
+
+    public int score;
+
+    [SerializeField]
+    private GameObject[] tiles;
+    private bool stillEmptyTiles;
+
+    private void Start()
     {
-        DontDestroyOnLoad(this);
+        score = 0;
+        updateScore(0);
+
     }
 
-    public void onPlay()
+    public void updateScore(int newScore)
     {
-        SceneManager.LoadScene(1);
+        score += newScore;
+        scoreText.text = ("score: " + score.ToString());
+    }
+
+    private void Update()
+    {
+        if (score >= 400)
+        {
+            SceneManager.LoadScene(2);
+        }
+
+        checkForFailure();
+    }
+
+    private void checkForFailure()
+    {
+        stillEmptyTiles = false;
+
+        foreach (GameObject x in tiles)
+        {
+            if (x.GetComponent<CellObject>().empty == true)
+            {
+                stillEmptyTiles = true;
+                break;
+            }
+        }
+
+        if (stillEmptyTiles == false)
+        {
+            SceneManager.LoadScene(3);
+        }
     }
 
 }

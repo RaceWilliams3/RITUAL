@@ -6,7 +6,7 @@ public class Connector : MonoBehaviour
 {
     public bool connected = false;
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     {
         if (connected == false && 
             this.transform.parent.GetComponent<CellObject>().empty == false &&

@@ -13,6 +13,7 @@ public class CellObject : MonoBehaviour
 
     public GameObject[] neighbors = new GameObject[6];
     public Connector[] connectors;
+    public GameManager gameManager;
 
     public Material emptyMat;
     public Material filledMat;
@@ -43,15 +44,21 @@ public class CellObject : MonoBehaviour
                 x.gameObject.SetActive(false);
             }
         }
+
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         
 
     }
 
     public void connectorCollided(Connector connector)
     {
-        if (empty == false)
+        if (gameManager != null)
         {
-            Debug.Log("Point");
+            if (!empty)
+            {
+                gameManager.updateScore(1);
+            }
+            
         }
     }
 
@@ -75,12 +82,7 @@ public class CellObject : MonoBehaviour
         if (empty && !isHome)
         {
             createConnectors(TileManager.instance.currentTile);
-            Debug.Log("empty supposedly = true: " + empty);
             
-        }
-        else
-        {
-            Debug.Log("empty supposedly = false: " + empty);
         }
         
     }
