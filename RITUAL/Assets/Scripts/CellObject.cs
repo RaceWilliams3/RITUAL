@@ -17,6 +17,8 @@ public class CellObject : MonoBehaviour
     public Material emptyMat;
     public Material filledMat;
 
+    public bool isHome;
+
 
     
 
@@ -34,17 +36,20 @@ public class CellObject : MonoBehaviour
         connectors = gameObject.GetComponentsInChildren<Connector>();
         checkForNeighbors();
 
-        foreach (Connector x in connectors)
+        if (!isHome)
         {
-            x.gameObject.SetActive(false);
+            foreach(Connector x in connectors)
+            {
+                x.gameObject.SetActive(false);
+            }
         }
+        
 
     }
 
     public void connectorCollided(Connector connector)
     {
-        Debug.Log("empty stats: " + empty);
-        if (connector != null && empty == false)
+        if (empty == false)
         {
             Debug.Log("Point");
         }
@@ -52,26 +57,37 @@ public class CellObject : MonoBehaviour
 
     void OnMouseDown()
     {
-        empty = false;
-        GetComponent<MeshRenderer>().material = filledMat;
-        updateNeighbors();
-        createConnectors(TileManager.instance.currentTile);
+        if (empty && !isHome)
+        {
+            empty = false;
+            GetComponent<MeshRenderer>().material = filledMat;
 
-        TileManager.instance.createNewTile();
+            createConnectors(TileManager.instance.currentTile);
+
+            TileManager.instance.createNewTile();
+        }
+        
 
     }
 
     void OnMouseEnter()
     {
-        if (empty)
+        if (empty && !isHome)
         {
             createConnectors(TileManager.instance.currentTile);
+            Debug.Log("empty supposedly = true: " + empty);
+            
         }
+        else
+        {
+            Debug.Log("empty supposedly = false: " + empty);
+        }
+        
     }
 
     void OnMouseExit()
     {
-        if (empty)
+        if (empty && !isHome)
         {
             for (int i = 0; i < 6; i++)
             {
@@ -84,7 +100,7 @@ public class CellObject : MonoBehaviour
 
     private void createConnectors(bool[] connectionMap)
     {
-        for(int i = 0; i < 6; i++)
+        for (int i = 0; i < 6; i++)
         {
             if (connectionMap[i] == true)
             {
