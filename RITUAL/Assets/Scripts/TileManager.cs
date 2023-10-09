@@ -26,26 +26,62 @@ public class TileManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            rotateTile();
+            currentTile = rotateTile();
         }
     }
 
   
 
-    private void rotateTile()
+    private bool[] rotateTile()
     {
         Debug.Log("rotated");
         bool[] tempTile = new bool[6];
+        bool[] tempTile2 = new bool[6];
         tempTile = currentTile;
 
-        for (int i = 1; i < 6; i++)
+        /*Debug.Log("Temp Tile: ");
+        printTest(tempTile);
+
+
+        Debug.Log("Current Tile: ");
+        printTest(tempTile2);   */
+
+        /*for (int i = 0; i < 5; i++)
         {
-            currentTile[i] = tempTile[i - 1];
-            
-        }
-        currentTile[0] = tempTile[5];
+            if (i == 5)
+            {
+                tempTile2[i] = tempTile[0];
+                break;
+            }
+
+            tempTile2[i] = tempTile[i + 1];
+        }*/
+        tempTile2[0] = tempTile[1];
+        tempTile2[1] = tempTile[2];
+        tempTile2[2] = tempTile[3];
+        tempTile2[3] = tempTile[4];
+        tempTile2[4] = tempTile[5];
+        tempTile2[5] = tempTile[0];
 
 
+
+
+       /* Debug.Log("Temp Tile: ");
+        printTest(tempTile);
+        
+        
+        Debug.Log("Current Tile: ");
+        printTest(tempTile2);*/
+
+        return tempTile2;
+
+
+    }
+
+
+    private void printTest(bool[] tile)
+    {
+        Debug.Log(tile[0] +" "+ tile[1] + " " + tile[2] + " " + tile[3] + " " + tile[4] + " " + tile[5]);
     }
 
 
