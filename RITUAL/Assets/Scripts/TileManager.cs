@@ -5,6 +5,7 @@ using UnityEngine;
 public class TileManager : MonoBehaviour
 {
     public bool[] currentTile = new bool[6];
+    private CellObject[] cells;
 
 
     public static TileManager instance;
@@ -20,6 +21,7 @@ public class TileManager : MonoBehaviour
     void Start()
     {
         createNewTile();
+        cells = FindObjectsOfType<CellObject>();
     }
 
     void Update()
@@ -27,6 +29,15 @@ public class TileManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             currentTile = rotateTile();
+
+            foreach (CellObject x in cells)
+            {
+                if (x.empty && !x.isHome)
+                {
+                    x.hideConnectors();
+                    x.createConnectors(currentTile);
+                }
+            }
         }
     }
 

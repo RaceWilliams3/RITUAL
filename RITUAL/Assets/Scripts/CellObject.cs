@@ -20,6 +20,9 @@ public class CellObject : MonoBehaviour
 
     public bool isHome;
 
+    private float mouseLastExited;
+    private float mouseLeaveBufffer = 0.05f;
+
 
     
 
@@ -36,6 +39,7 @@ public class CellObject : MonoBehaviour
     {
         connectors = gameObject.GetComponentsInChildren<Connector>();
         checkForNeighbors();
+        mouseLastExited = Time.time;
 
         if (!isHome)
         {
@@ -79,6 +83,7 @@ public class CellObject : MonoBehaviour
 
     void OnMouseEnter()
     {
+        mouseLastExited = Time.time + 100000f;
         if (empty && !isHome)
         {
             createConnectors(TileManager.instance.currentTile);
@@ -89,24 +94,38 @@ public class CellObject : MonoBehaviour
 
     void OnMouseExit()
     {
-        if (empty && !isHome)
-        {
-            for (int i = 0; i < 6; i++)
-            {
-                connectors[i].gameObject.SetActive(false);
-            }
-        }
+        mouseLastExited = Time.time;
         
     }
 
+    private void Update()
+    {
+        if (mouseLastExited + mouseLeaveBufffer < Time.time)
+        {
+            hideConnectors();
+        }
+    }
 
-    private void createConnectors(bool[] connectionMap)
+
+
+    public void createConnectors(bool[] connectionMap)
     {
         for (int i = 0; i < 6; i++)
         {
             if (connectionMap[i] == true)
             {
                 connectors[i].gameObject.SetActive(true);
+            }
+        }
+    }
+
+    public void hideConnectors()
+    {
+        if (empty && !isHome)
+        {
+            for (int i = 0; i < 6; i++)
+            {
+                connectors[i].gameObject.SetActive(false);
             }
         }
     }
