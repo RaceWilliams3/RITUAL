@@ -24,6 +24,7 @@ Added basic game loop with scoring
 Reworked some lights and materials for more atmosphere 
 
 10/4/23 - 10/10/23 Changes:
+
 Fixed rotation of tiles
 Added buffer for deselecting tiles to get rid of weird flashing
 Added a queue system for keeping track of upcoming tiles (not visible in the scene just yet)
