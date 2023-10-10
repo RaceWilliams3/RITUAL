@@ -73,7 +73,7 @@ public class CellObject : MonoBehaviour
             empty = false;
             GetComponent<MeshRenderer>().material = filledMat;
 
-            createConnectors(TileManager.instance.currentTile);
+            createConnectors(TileManager.instance.currentTile.connectionStates);
 
             TileManager.instance.createNewTile();
         }
@@ -86,7 +86,7 @@ public class CellObject : MonoBehaviour
         mouseLastExited = Time.time + 100000f;
         if (empty && !isHome)
         {
-            createConnectors(TileManager.instance.currentTile);
+            createConnectors(TileManager.instance.currentTile.connectionStates);
             
         }
         

@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class TileManager : MonoBehaviour
 {
-    public bool[] currentTile = new bool[6];
+    public tile currentTile = new tile(new bool[6]);
+
+    public Queue<tile> tileQueue = new Queue<tile>();
+
     private CellObject[] cells;
 
 
@@ -21,6 +24,10 @@ public class TileManager : MonoBehaviour
     void Start()
     {
         createNewTile();
+        createNewTile();
+        createNewTile();
+        createNewTile();
+        createNewTile();
         cells = FindObjectsOfType<CellObject>();
     }
 
@@ -35,7 +42,7 @@ public class TileManager : MonoBehaviour
                 if (x.empty && !x.isHome)
                 {
                     x.hideConnectors();
-                    x.createConnectors(currentTile);
+                    x.createConnectors(currentTile.connectionStates);
                 }
             }
         }
@@ -43,11 +50,11 @@ public class TileManager : MonoBehaviour
 
   
 
-    private bool[] rotateTile()
+    private tile rotateTile()
     {
         Debug.Log("rotated");
-        bool[] tempTile = new bool[6];
-        bool[] tempTile2 = new bool[6];
+        tile tempTile = new tile(new bool[6]);
+        tile tempTile2 = new tile(new bool[6]);
         tempTile = currentTile;
 
         /*Debug.Log("Temp Tile: ");
@@ -67,12 +74,12 @@ public class TileManager : MonoBehaviour
 
             tempTile2[i] = tempTile[i + 1];
         }*/
-        tempTile2[0] = tempTile[1];
-        tempTile2[1] = tempTile[2];
-        tempTile2[2] = tempTile[3];
-        tempTile2[3] = tempTile[4];
-        tempTile2[4] = tempTile[5];
-        tempTile2[5] = tempTile[0];
+        tempTile2.connectionStates[0] = tempTile.connectionStates[1];
+        tempTile2.connectionStates[1] = tempTile.connectionStates[2];
+        tempTile2.connectionStates[2] = tempTile.connectionStates[3];
+        tempTile2.connectionStates[3] = tempTile.connectionStates[4];
+        tempTile2.connectionStates[4] = tempTile.connectionStates[5];
+        tempTile2.connectionStates[5] = tempTile.connectionStates[0];
 
 
 
@@ -100,16 +107,21 @@ public class TileManager : MonoBehaviour
 
     public void createNewTile()
     {
+        bool[] newTile = new bool[6];
+
         for (int i = 0; i < 6; i++)
         {
             if ((int)Random.Range(0, 100) % 2 == 0)
             {
-                currentTile[i] = true;
+                newTile[i] = true;
             } else
             {
-                currentTile[i] = false;
+                newTile[i] = false;
             }
         }
+
+        tileQueue.Enqueue(new tile(newTile));
+        currentTile = tileQueue.Dequeue();
     }
 
 }
