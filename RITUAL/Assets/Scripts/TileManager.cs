@@ -10,6 +10,8 @@ public class TileManager : MonoBehaviour
 
     private CellObject[] cells;
 
+    public PreviewCell[] previewCells;
+
 
     public static TileManager instance;
 
@@ -23,12 +25,16 @@ public class TileManager : MonoBehaviour
 
     void Start()
     {
-        createNewTile();
-        createNewTile();
-        createNewTile();
-        createNewTile();
+        previewCells = FindObjectsOfType<PreviewCell>();
+
+        fillQueue();
+        fillQueue();
+        fillQueue();
+        fillQueue();
+        fillQueue();
         createNewTile();
         cells = FindObjectsOfType<CellObject>();
+        
     }
 
     void Update()
@@ -120,8 +126,34 @@ public class TileManager : MonoBehaviour
             }
         }
 
-        tileQueue.Enqueue(new tile(newTile));
         currentTile = tileQueue.Dequeue();
+
+        tileQueue.Enqueue(new tile(newTile));
+        
+        foreach (PreviewCell x in previewCells)
+        {
+            x.UpdatePreview(tileQueue);
+        }
+
+    }
+
+    private void fillQueue()
+    {
+        bool[] newTile = new bool[6];
+
+        for (int i = 0; i < 6; i++)
+        {
+            if ((int)Random.Range(0, 100) % 2 == 0)
+            {
+                newTile[i] = true;
+            }
+            else
+            {
+                newTile[i] = false;
+            }
+        }
+
+        tileQueue.Enqueue(new tile(newTile));
     }
 
 }
