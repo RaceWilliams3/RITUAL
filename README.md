@@ -28,3 +28,8 @@ Reworked some lights and materials for more atmosphere
 Fixed rotation of tiles
 Added buffer for deselecting tiles to get rid of weird flashing
 Added a queue system for keeping track of upcoming tiles (not visible in the scene just yet)
+
+10/11/23 - 10/17/23 Changes:
+
+Swapped pedestal model and added some textures (Color, bump, and normal)
+Added preview tiles and fixed the queue system for upcoming tiles.
