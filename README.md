@@ -5,6 +5,11 @@ Unity Version 2021.3.20
 
 https://racewilliams3.github.io/RITUAL/
 
+## CREDITS
+Hex Grid Math- https://www.redblobgames.com/grids/hexagons/
+
+
+## CHANGE LOG
 9/11/23 - 9/18/23 Changes:
 
 Created a basic hex grid system with cells that can find their own neighbors. 
