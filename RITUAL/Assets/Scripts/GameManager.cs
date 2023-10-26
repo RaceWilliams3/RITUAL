@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (score >= 30)
+        if (score >= 50)
         {
             SceneManager.LoadScene(2);
         }

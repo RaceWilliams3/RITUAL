@@ -20,7 +20,7 @@ public class CellObject : MonoBehaviour
 
     public bool isHome;
 
-    private float mouseLastExited;
+    private float mouseLastExited = 100000000f;
     private float mouseLeaveBufffer = 0.05f;
 
 
@@ -63,6 +63,15 @@ public class CellObject : MonoBehaviour
                 gameManager.updateScore(1);
             }
             
+        }
+    }
+
+    public void rotatePreview()
+    {
+        if (empty && mouseLastExited < Time.time)
+        {
+            hideConnectors();
+            createConnectors(TileManager.instance.currentTile.connectionStates);
         }
     }
 

@@ -47,8 +47,7 @@ public class TileManager : MonoBehaviour
             {
                 if (x.empty && !x.isHome)
                 {
-                    x.hideConnectors();
-                    x.createConnectors(currentTile.connectionStates);
+                    x.rotatePreview();
                 }
             }
         }
@@ -63,39 +62,12 @@ public class TileManager : MonoBehaviour
         tile tempTile2 = new tile(new bool[6]);
         tempTile = currentTile;
 
-        /*Debug.Log("Temp Tile: ");
-        printTest(tempTile);
-
-
-        Debug.Log("Current Tile: ");
-        printTest(tempTile2);   */
-
-        /*for (int i = 0; i < 5; i++)
-        {
-            if (i == 5)
-            {
-                tempTile2[i] = tempTile[0];
-                break;
-            }
-
-            tempTile2[i] = tempTile[i + 1];
-        }*/
         tempTile2.connectionStates[0] = tempTile.connectionStates[1];
         tempTile2.connectionStates[1] = tempTile.connectionStates[2];
         tempTile2.connectionStates[2] = tempTile.connectionStates[3];
         tempTile2.connectionStates[3] = tempTile.connectionStates[4];
         tempTile2.connectionStates[4] = tempTile.connectionStates[5];
         tempTile2.connectionStates[5] = tempTile.connectionStates[0];
-
-
-
-
-       /* Debug.Log("Temp Tile: ");
-        printTest(tempTile);
-        
-        
-        Debug.Log("Current Tile: ");
-        printTest(tempTile2);*/
 
         return tempTile2;
 
