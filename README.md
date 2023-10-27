@@ -8,6 +8,7 @@ https://racewilliams3.github.io/RITUAL/
 
 ## CREDITS
 Hex Grid Math- https://www.redblobgames.com/grids/hexagons/
+SHader Grid- https://www.youtube.com/watch?v=X8cVhNHQOv8
 
 
 ## CHANGE LOG
@@ -41,7 +42,9 @@ Swapped the pedestal model and added some textures (Color, bump, and normal)
 Added preview tiles and fixed the queue system for upcoming tiles.
 
 10/18/23 - 10/24/23 Changes:
+
 Refactored some of the connector display and rotation code
 
 10/25/23 - 10/31/23 Changes:
+
 Added a shader to the connectors to look more interesting
