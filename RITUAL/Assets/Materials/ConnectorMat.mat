@@ -120,7 +120,7 @@ Material:
     - _Color: {r: 0.4811321, g: 0.16113387, b: 0.42092034, a: 1}
     - _Direction: {r: 0, g: -1, b: 0, a: 0}
     - _EmissionColor: {r: 0.6037736, g: 0, b: 0.4844775, a: 1}
-    - _FlameColor: {r: 4.371155, g: 0.23536985, b: 6.4222345, a: 0}
+    - _FlameColor: {r: 6.4222345, g: 0.7404189, b: 0.26899424, a: 0}
     - _SoftParticleFadeParams: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_BuildTextureStacks: []

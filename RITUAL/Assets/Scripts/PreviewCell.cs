@@ -39,7 +39,9 @@ public class PreviewCell : MonoBehaviour
         {
             x.gameObject.SetActive(false);
         }
-        
+
+        GetComponent<MeshRenderer>().material = filledMat;
+
 
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 

@@ -48,6 +48,12 @@ public class CellObject : MonoBehaviour
                 x.gameObject.SetActive(false);
             }
         }
+        else
+        {
+            GetComponent<MeshRenderer>().material = filledMat;
+        }
+
+
 
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         
