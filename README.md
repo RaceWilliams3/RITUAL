@@ -48,3 +48,9 @@ Refactored some of the connector display and rotation code
 10/25/23 - 10/31/23 Changes:
 
 Added a shader to the connectors to look more interesting
+Fixed the rotation of tiles
+
+11/1/23 - 11/7/23
+
+Added animation to the lights for vibes
+Reordered the preview tiles to be clearer
