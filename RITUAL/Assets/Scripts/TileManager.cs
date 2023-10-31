@@ -12,6 +12,8 @@ public class TileManager : MonoBehaviour
 
     public PreviewCell[] previewCells;
 
+    public CellObject selectedTile = null;
+
 
     public static TileManager instance;
 
@@ -42,13 +44,9 @@ public class TileManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             currentTile = rotateTile();
-
-            foreach (CellObject x in cells)
+            if (selectedTile.empty && !selectedTile.isHome && selectedTile != null)
             {
-                if (x.empty && !x.isHome)
-                {
-                    x.rotatePreview();
-                }
+                selectedTile.rotatePreview();
             }
         }
     }

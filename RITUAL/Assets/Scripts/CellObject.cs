@@ -68,11 +68,10 @@ public class CellObject : MonoBehaviour
 
     public void rotatePreview()
     {
-        if (empty && mouseLastExited < Time.time)
-        {
-            hideConnectors();
-            createConnectors(TileManager.instance.currentTile.connectionStates);
-        }
+
+        hideConnectors();
+        createConnectors(TileManager.instance.currentTile.connectionStates);
+        
     }
 
     void OnMouseDown()
@@ -92,6 +91,7 @@ public class CellObject : MonoBehaviour
 
     void OnMouseEnter()
     {
+        TileManager.instance.selectedTile = this;
         mouseLastExited = Time.time + 100000f;
         if (empty && !isHome)
         {
