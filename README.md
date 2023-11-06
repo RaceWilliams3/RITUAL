@@ -54,3 +54,6 @@ Fixed the rotation of tiles
 
 Added animation to the lights for vibes
 Reordered the preview tiles to be clearer
+Added background sound effects
+Added rotating and placing sound effects
+Added rotating in both directions with Q and E

@@ -14,6 +14,8 @@ public class TileManager : MonoBehaviour
 
     public CellObject selectedTile = null;
 
+    public AudioSource rotateAudio;
+
 
     public static TileManager instance;
 
@@ -41,9 +43,22 @@ public class TileManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            currentTile = rotateTile();
+
+            rotateAudio.Play();
+            currentTile = rotateTileRight();
+            if (selectedTile.empty && !selectedTile.isHome && selectedTile != null)
+            {
+                selectedTile.rotatePreview();
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+
+            rotateAudio.Play();
+            currentTile = rotateTileLeft();
             if (selectedTile.empty && !selectedTile.isHome && selectedTile != null)
             {
                 selectedTile.rotatePreview();
@@ -53,9 +68,8 @@ public class TileManager : MonoBehaviour
 
   
 
-    private tile rotateTile()
+    private tile rotateTileRight()
     {
-        Debug.Log("rotated");
         tile tempTile = new tile(new bool[6]);
         tile tempTile2 = new tile(new bool[6]);
         tempTile = currentTile;
@@ -72,6 +86,23 @@ public class TileManager : MonoBehaviour
 
     }
 
+    private tile rotateTileLeft()
+    {
+        tile tempTile = new tile(new bool[6]);
+        tile tempTile2 = new tile(new bool[6]);
+        tempTile = currentTile;
+
+        tempTile2.connectionStates[0] = tempTile.connectionStates[5];
+        tempTile2.connectionStates[1] = tempTile.connectionStates[0];
+        tempTile2.connectionStates[2] = tempTile.connectionStates[1];
+        tempTile2.connectionStates[3] = tempTile.connectionStates[2];
+        tempTile2.connectionStates[4] = tempTile.connectionStates[3];
+        tempTile2.connectionStates[5] = tempTile.connectionStates[4];
+
+        return tempTile2;
+
+
+    }
 
     private void printTest(bool[] tile)
     {

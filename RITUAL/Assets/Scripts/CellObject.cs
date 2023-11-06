@@ -5,10 +5,10 @@ using UnityEngine;
 public class CellObject : MonoBehaviour
 {
     /* Hex number system
-     *        1
-     *     6     2
-     *     5     3
-     *        4
+     *        0
+     *     5     1
+     *     4     2
+     *        3
      *                */
 
     public GameObject[] neighbors = new GameObject[6];
@@ -22,6 +22,8 @@ public class CellObject : MonoBehaviour
 
     private float mouseLastExited = 100000000f;
     private float mouseLeaveBufffer = 0.05f;
+
+    public AudioSource placeAudio;
 
 
     
@@ -40,6 +42,7 @@ public class CellObject : MonoBehaviour
         connectors = gameObject.GetComponentsInChildren<Connector>();
         checkForNeighbors();
         mouseLastExited = Time.time;
+        placeAudio = GetComponent<AudioSource>();
 
         if (!isHome)
         {
@@ -84,6 +87,7 @@ public class CellObject : MonoBehaviour
     {
         if (empty && !isHome)
         {
+            placeAudio.Play();
             empty = false;
             GetComponent<MeshRenderer>().material = filledMat;
 
