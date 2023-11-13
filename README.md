@@ -8,8 +8,10 @@ https://racewilliams3.github.io/RITUAL/
 
 ## CREDITS
 Hex Grid Math- https://www.redblobgames.com/grids/hexagons/
-SHader Grid- https://www.youtube.com/watch?v=X8cVhNHQOv8
 
+Shader Grid- https://www.youtube.com/watch?v=X8cVhNHQOv8
+
+Post Processing - https://www.youtube.com/watch?v=ZzUOgsYXhrY
 
 ## CHANGE LOG
 9/11/23 - 9/18/23 Changes:
@@ -57,3 +59,8 @@ Reordered the preview tiles to be clearer
 Added background sound effects
 Added rotating and placing sound effects
 Added rotating in both directions with Q and E
+
+11/8/23 - 11/14/23
+Added a completely new menu with how-to and option menu. 
+Added sound effects for the menu. 
+Added post-processing effects. 
