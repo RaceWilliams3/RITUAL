@@ -9,6 +9,8 @@ public class MenuManager : MonoBehaviour
     public GameObject optionsMenu;
     public GameObject howToMenu;
 
+    public AudioSource sound;
+
 
 
     public void onPlay()
@@ -43,5 +45,11 @@ public class MenuManager : MonoBehaviour
     {
         mainMenu.SetActive(false);
         howToMenu.SetActive(true);
+    }
+
+    public void onButtonClicked()
+    {
+        sound.Stop();
+        sound.Play();
     }
 }
