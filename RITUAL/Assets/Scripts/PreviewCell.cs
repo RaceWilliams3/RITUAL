@@ -59,6 +59,8 @@ public class PreviewCell : MonoBehaviour
 
     public void createConnectors(tile connectionMap)
     {
+        hideConnectors();
+
         for (int i = 0; i < 6; i++)
         {
             if (connectionMap.connectionStates[i] == true)

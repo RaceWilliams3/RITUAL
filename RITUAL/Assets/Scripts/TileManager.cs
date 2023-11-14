@@ -14,6 +14,11 @@ public class TileManager : MonoBehaviour
 
     public CellObject selectedTile = null;
 
+    public tile holdTile;
+    public PreviewCell holdTileObject;
+    private bool hasHeld = false;
+    
+
     public AudioSource rotateAudio;
 
 
@@ -29,7 +34,7 @@ public class TileManager : MonoBehaviour
 
     void Start()
     {
-        previewCells = FindObjectsOfType<PreviewCell>();
+        
 
         fillQueue();
         fillQueue();
@@ -64,9 +69,33 @@ public class TileManager : MonoBehaviour
                 selectedTile.rotatePreview();
             }
         }
-    }
 
-  
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+
+            if (hasHeld)
+            {
+                tile tempTile = holdTile;
+                holdTile = currentTile;
+                currentTile = tempTile;
+            } 
+            else
+            {
+                holdTile = currentTile;
+                createNewTile();
+                hasHeld = true;
+            }
+            holdTileObject.createConnectors(holdTile);
+
+
+            if (selectedTile.empty && !selectedTile.isHome && selectedTile != null)
+            {
+                selectedTile.rotatePreview();
+            }
+
+        }
+
+    }
 
     private tile rotateTileRight()
     {
@@ -156,5 +185,5 @@ public class TileManager : MonoBehaviour
 
         tileQueue.Enqueue(new tile(newTile));
     }
-
+        
 }

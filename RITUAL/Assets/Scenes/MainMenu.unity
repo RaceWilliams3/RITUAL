@@ -3481,8 +3481,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 2.858307, y: -70.23984}
-  m_SizeDelta: {x: -458.48602, y: -325.14813}
+  m_AnchoredPosition: {x: 2.858307, y: -83.412994}
+  m_SizeDelta: {x: -458.486, y: -222.927}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1506954369
 MonoBehaviour:
@@ -3502,9 +3502,9 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 0
+  m_Spacing: -32.82
   m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
+  m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
@@ -3545,8 +3545,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 274.39865, y: -98.1832}
-  m_SizeDelta: {x: 545.8071, y: 196.2138}
+  m_AnchoredPosition: {x: 274.39862, y: -146.78351}
+  m_SizeDelta: {x: 545.807, y: 249.56}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1515682108
 MonoBehaviour:
@@ -3568,8 +3568,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: place tiles to create connections and gain points. use Q and E to rotate
-    and left click to place.
+  m_text: "place tiles to create connections and gain points. \nq and e to rotate
+    \nleft click to place\nc to hold"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ed7b5cb249a55404faeefd5b5bf37d3a, type: 2}
   m_sharedMaterial: {fileID: -5599519101896515102, guid: ed7b5cb249a55404faeefd5b5bf37d3a, type: 2}
@@ -3632,7 +3632,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: -17.915085, z: 0, w: 14.847378}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -4598,8 +4598,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 274.39865, y: -220.60913}
-  m_SizeDelta: {x: 549.514, y: 48.332874}
+  m_AnchoredPosition: {x: 274.39862, y: -281.9065}
+  m_SizeDelta: {x: 549.514, y: 86.326}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2027862971
 MonoBehaviour:
