@@ -64,3 +64,4 @@ Added rotating in both directions with Q and E
 Added a completely new menu with how-to and option menu. 
 Added sound effects for the menu. 
 Added post-processing effects. 
+Added a hold function.
