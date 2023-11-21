@@ -32,7 +32,7 @@ public class PreviewCell : MonoBehaviour
 
     public bool empty = true;
 
-    public void Start()
+    public void Awake()
     {
         connectors = gameObject.GetComponentsInChildren<PreviewConnector>();
         foreach (PreviewConnector x in connectors)

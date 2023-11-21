@@ -11,13 +11,6 @@ public class MenuManager : MonoBehaviour
 
     public AudioSource sound;
 
-
-
-    public void onPlay()
-    {
-        SceneManager.LoadScene(1);
-    }
-
     public void onOptionsButton()
     {
         mainMenu.SetActive(false);
@@ -51,5 +44,13 @@ public class MenuManager : MonoBehaviour
     {
         sound.Stop();
         sound.Play();
+    }
+
+    private void Update()
+    {
+        if (Input.anyKeyDown && howToMenu.activeSelf == true)
+        {
+            SceneManager.LoadScene(1);
+        }
     }
 }
