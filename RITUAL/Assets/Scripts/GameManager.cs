@@ -15,6 +15,14 @@ public class GameManager : MonoBehaviour
     private GameObject[] tiles;
     private bool stillEmptyTiles;
 
+
+    public GameObject helpScreen;
+
+    public void helpScreenToggle()
+    {
+        helpScreen.SetActive(!helpScreen.activeSelf);
+    }
+
     private void Start()
     {
         score = 0;
@@ -25,7 +33,7 @@ public class GameManager : MonoBehaviour
     public void updateScore(int newScore)
     {
         score += newScore;
-        scoreText.text = ("score: " + score.ToString());
+        scoreText.text = ("score: " + score.ToString() + "/50");
     }
 
     private void Update()
