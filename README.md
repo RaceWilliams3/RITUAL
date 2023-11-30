@@ -65,3 +65,7 @@ Added a completely new menu with how-to and option menu.
 Added sound effects for the menu. 
 Added post-processing effects. 
 Added a hold function.
+
+11/15/23 - 11/29/23
+Moved how to screen to when you play so you have to look. 
+Added a quick reference to controls when playing the game. 
