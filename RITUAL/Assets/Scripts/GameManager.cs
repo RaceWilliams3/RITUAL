@@ -15,6 +15,10 @@ public class GameManager : MonoBehaviour
     private GameObject[] tiles;
     private bool stillEmptyTiles;
 
+    public Animator camAnimator;
+    public GameObject winText;
+    public GameObject[] otherUiItems;
+
 
     public GameObject helpScreen;
 
@@ -33,14 +37,19 @@ public class GameManager : MonoBehaviour
     public void updateScore(int newScore)
     {
         score += newScore;
-        scoreText.text = ("score: " + score.ToString() + "/50");
+        scoreText.text = ("score: " + score.ToString() + "/80");
     }
 
     private void Update()
     {
-        if (score >= 50)
+        if (score >= 4)
         {
-            SceneManager.LoadScene(2);
+            camAnimator.SetBool("Won", true);
+            winText.SetActive(true);
+            foreach (GameObject x in otherUiItems)
+            {
+                x.SetActive(false);
+            }
         }
 
         checkForFailure();
