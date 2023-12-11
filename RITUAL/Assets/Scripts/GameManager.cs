@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (score >= 4)
+        if (score >= 80)
         {
             camAnimator.SetBool("Won", true);
             winText.SetActive(true);
