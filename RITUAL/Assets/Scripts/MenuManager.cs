@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class MenuManager : MonoBehaviour
 {
     public GameObject mainMenu;
     public GameObject optionsMenu;
     public GameObject howToMenu;
+    public AudioMixer mixer;
 
     public AudioSource sound;
 
@@ -45,6 +47,17 @@ public class MenuManager : MonoBehaviour
         sound.Stop();
         sound.Play();
     }
+
+    public void SetSfxLevel(float sliderValue)
+    {
+        mixer.SetFloat("SFX", Mathf.Log10(sliderValue)*40);
+    }
+
+    public void SetAmbienceLevel(float sliderValue)
+    {
+        mixer.SetFloat("Ambience", Mathf.Log10(sliderValue)*40);
+    }
+
 
     private void Update()
     {

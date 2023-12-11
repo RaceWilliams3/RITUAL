@@ -144,15 +144,29 @@ public class TileManager : MonoBehaviour
     public void createNewTile()
     {
         bool[] newTile = new bool[6];
+        bool emptyTile = true;
 
-        for (int i = 0; i < 6; i++)
+        while (emptyTile == true)
         {
-            if ((int)Random.Range(0, 100) % 2 == 0)
+            for (int i = 0; i < 6; i++)
             {
-                newTile[i] = true;
-            } else
+                if ((int)Random.Range(0, 100) % 2 == 0)
+                {
+                    newTile[i] = true;
+                }
+                else
+                {
+                    newTile[i] = false;
+                }
+            }
+
+            foreach (bool t in newTile)
             {
-                newTile[i] = false;
+                if (t == true)
+                {
+                    emptyTile = false;
+                    continue;
+                }
             }
         }
 

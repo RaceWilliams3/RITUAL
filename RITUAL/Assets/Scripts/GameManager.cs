@@ -17,7 +17,11 @@ public class GameManager : MonoBehaviour
 
     public Animator camAnimator;
     public GameObject winText;
+    public GameObject loseText;
     public GameObject[] otherUiItems;
+
+    private float timeOfEnd;
+    private float returnToScreenDelay = 1f;
 
 
     public GameObject helpScreen;
@@ -42,10 +46,11 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (score >= 80)
+        if (score >= 80 && timeOfEnd == 0)
         {
             camAnimator.SetBool("Won", true);
             winText.SetActive(true);
+            timeOfEnd = Time.time;
             foreach (GameObject x in otherUiItems)
             {
                 x.SetActive(false);
@@ -53,6 +58,14 @@ public class GameManager : MonoBehaviour
         }
 
         checkForFailure();
+
+        if (winText.activeSelf == true || loseText.activeSelf == true)
+        {
+            if (Input.anyKey && Time.time - timeOfEnd > returnToScreenDelay)
+            {
+                SceneManager.LoadScene("MainMenu");
+            }
+        }
     }
 
     private void checkForFailure()
@@ -68,9 +81,15 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (stillEmptyTiles == false)
+        if (stillEmptyTiles == false && timeOfEnd == 0)
         {
-            SceneManager.LoadScene(3);
+            camAnimator.SetBool("Won", true);
+            loseText.SetActive(true);
+            timeOfEnd = Time.time;
+            foreach (GameObject x in otherUiItems)
+            {
+                x.SetActive(false);
+            }
         }
     }
 
